@@ -7,7 +7,7 @@ import axios, {AxiosRequestConfig} from "axios";
 import {TagAbstract} from "sdkgen-client"
 import {ClientException, UnknownStatusCodeException} from "sdkgen-client";
 
-import {MessageException} from "./MessageException";
+import {ResponseException} from "./ResponseException";
 import {State} from "./State";
 import {StateCollection} from "./StateCollection";
 
@@ -16,7 +16,7 @@ export class StateTag extends TagAbstract {
      * Returns a specific state
      *
      * @returns {Promise<State>}
-     * @throws {MessageExceptionException}
+     * @throws {ResponseExceptionException}
      * @throws {ClientException}
      */
     public async get(stateId: string): Promise<State> {
@@ -41,11 +41,11 @@ export class StateTag extends TagAbstract {
             } else if (axios.isAxiosError(error) && error.response) {
                 switch (error.response.status) {
                     case 400:
-                        throw new MessageException(error.response.data);
+                        throw new ResponseException(error.response.data);
                     case 404:
-                        throw new MessageException(error.response.data);
+                        throw new ResponseException(error.response.data);
                     case 500:
-                        throw new MessageException(error.response.data);
+                        throw new ResponseException(error.response.data);
                     default:
                         throw new UnknownStatusCodeException('The server returned an unknown status code');
                 }
@@ -59,7 +59,7 @@ export class StateTag extends TagAbstract {
      * Returns all available states
      *
      * @returns {Promise<StateCollection>}
-     * @throws {MessageExceptionException}
+     * @throws {ResponseExceptionException}
      * @throws {ClientException}
      */
     public async getAll(startIndex?: number, name?: string): Promise<StateCollection> {
@@ -85,11 +85,11 @@ export class StateTag extends TagAbstract {
             } else if (axios.isAxiosError(error) && error.response) {
                 switch (error.response.status) {
                     case 400:
-                        throw new MessageException(error.response.data);
+                        throw new ResponseException(error.response.data);
                     case 404:
-                        throw new MessageException(error.response.data);
+                        throw new ResponseException(error.response.data);
                     case 500:
-                        throw new MessageException(error.response.data);
+                        throw new ResponseException(error.response.data);
                     default:
                         throw new UnknownStatusCodeException('The server returned an unknown status code');
                 }

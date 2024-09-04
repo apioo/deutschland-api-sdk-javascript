@@ -12,7 +12,7 @@ import {AutobahnClosureTag} from "./AutobahnClosureTag";
 import {AutobahnCollection} from "./AutobahnCollection";
 import {AutobahnParkingLorryTag} from "./AutobahnParkingLorryTag";
 import {AutobahnWarningTag} from "./AutobahnWarningTag";
-import {MessageException} from "./MessageException";
+import {ResponseException} from "./ResponseException";
 
 export class AutobahnTag extends TagAbstract {
     public warning(): AutobahnWarningTag
@@ -51,7 +51,7 @@ export class AutobahnTag extends TagAbstract {
      * Returns all available autobahns
      *
      * @returns {Promise<AutobahnCollection>}
-     * @throws {MessageExceptionException}
+     * @throws {ResponseExceptionException}
      * @throws {ClientException}
      */
     public async getAll(): Promise<AutobahnCollection> {
@@ -75,11 +75,11 @@ export class AutobahnTag extends TagAbstract {
             } else if (axios.isAxiosError(error) && error.response) {
                 switch (error.response.status) {
                     case 400:
-                        throw new MessageException(error.response.data);
+                        throw new ResponseException(error.response.data);
                     case 404:
-                        throw new MessageException(error.response.data);
+                        throw new ResponseException(error.response.data);
                     case 500:
-                        throw new MessageException(error.response.data);
+                        throw new ResponseException(error.response.data);
                     default:
                         throw new UnknownStatusCodeException('The server returned an unknown status code');
                 }

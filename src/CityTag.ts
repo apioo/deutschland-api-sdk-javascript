@@ -9,14 +9,14 @@ import {ClientException, UnknownStatusCodeException} from "sdkgen-client";
 
 import {City} from "./City";
 import {CityCollection} from "./CityCollection";
-import {MessageException} from "./MessageException";
+import {ResponseException} from "./ResponseException";
 
 export class CityTag extends TagAbstract {
     /**
      * Returns a specific city
      *
      * @returns {Promise<City>}
-     * @throws {MessageExceptionException}
+     * @throws {ResponseExceptionException}
      * @throws {ClientException}
      */
     public async get(cityId: string): Promise<City> {
@@ -41,11 +41,11 @@ export class CityTag extends TagAbstract {
             } else if (axios.isAxiosError(error) && error.response) {
                 switch (error.response.status) {
                     case 400:
-                        throw new MessageException(error.response.data);
+                        throw new ResponseException(error.response.data);
                     case 404:
-                        throw new MessageException(error.response.data);
+                        throw new ResponseException(error.response.data);
                     case 500:
-                        throw new MessageException(error.response.data);
+                        throw new ResponseException(error.response.data);
                     default:
                         throw new UnknownStatusCodeException('The server returned an unknown status code');
                 }
@@ -59,7 +59,7 @@ export class CityTag extends TagAbstract {
      * Returns all available cities
      *
      * @returns {Promise<CityCollection>}
-     * @throws {MessageExceptionException}
+     * @throws {ResponseExceptionException}
      * @throws {ClientException}
      */
     public async getAll(startIndex?: number, state?: string, district?: string, name?: string, zipCode?: string): Promise<CityCollection> {
@@ -88,11 +88,11 @@ export class CityTag extends TagAbstract {
             } else if (axios.isAxiosError(error) && error.response) {
                 switch (error.response.status) {
                     case 400:
-                        throw new MessageException(error.response.data);
+                        throw new ResponseException(error.response.data);
                     case 404:
-                        throw new MessageException(error.response.data);
+                        throw new ResponseException(error.response.data);
                     case 500:
-                        throw new MessageException(error.response.data);
+                        throw new ResponseException(error.response.data);
                     default:
                         throw new UnknownStatusCodeException('The server returned an unknown status code');
                 }

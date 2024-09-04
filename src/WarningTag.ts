@@ -7,7 +7,7 @@ import axios, {AxiosRequestConfig} from "axios";
 import {TagAbstract} from "sdkgen-client"
 import {ClientException, UnknownStatusCodeException} from "sdkgen-client";
 
-import {MessageException} from "./MessageException";
+import {ResponseException} from "./ResponseException";
 import {WarningCollection} from "./WarningCollection";
 
 export class WarningTag extends TagAbstract {
@@ -15,7 +15,7 @@ export class WarningTag extends TagAbstract {
      * Returns all available warnings from the modular warning system (MoWaS)
      *
      * @returns {Promise<WarningCollection>}
-     * @throws {MessageExceptionException}
+     * @throws {ResponseExceptionException}
      * @throws {ClientException}
      */
     public async getAll(): Promise<WarningCollection> {
@@ -39,11 +39,11 @@ export class WarningTag extends TagAbstract {
             } else if (axios.isAxiosError(error) && error.response) {
                 switch (error.response.status) {
                     case 400:
-                        throw new MessageException(error.response.data);
+                        throw new ResponseException(error.response.data);
                     case 404:
-                        throw new MessageException(error.response.data);
+                        throw new ResponseException(error.response.data);
                     case 500:
-                        throw new MessageException(error.response.data);
+                        throw new ResponseException(error.response.data);
                     default:
                         throw new UnknownStatusCodeException('The server returned an unknown status code');
                 }
