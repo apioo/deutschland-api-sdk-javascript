@@ -9,6 +9,7 @@ export interface BundesratMember {
     name?: string
     party?: string
     state?: string
+    bundesratMember?: boolean
     member?: boolean
     designated?: boolean
     url?: string
