@@ -9,10 +9,11 @@ The following example shows how you initialize the client:
 
 ```typescript
 const client = Client::buildAnonymous();
+const collection = client.state().getAll();
 
-client.city().getAll().forEach((city: City) => {
-    console.log(city.state);
-})
+collection.getEntries().forEach((state: State) => {
+    console.log(city.name);
+});
 
 ```
 
