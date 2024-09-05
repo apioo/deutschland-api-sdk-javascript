@@ -8,7 +8,13 @@ This SDK helps to access the [DeutschlandAPI](https://deutschland-api.dev)
 The following example shows how you initialize the client:
 
 ```typescript
-const client = Client::build('[access_token]');
+const client = Client::buildAnonymous();
 
-// @TODO use the client
+client.city().getAll().forEach((city: City) => {
+    console.log(city.state);
+})
+
 ```
+
+More information about the complete API at:
+https://app.typehub.cloud/d/deutschland-api/sdk
