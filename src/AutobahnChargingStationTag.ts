@@ -15,7 +15,7 @@ export class AutobahnChargingStationTag extends TagAbstract {
      * Returns available charging stations for a specific autobahn
      *
      * @returns {Promise<AutobahnChargingStationCollection>}
-     * @throws {ResponseExceptionException}
+     * @throws {ResponseException}
      * @throws {ClientException}
      */
     public async getAll(autobahnId: string): Promise<AutobahnChargingStationCollection> {

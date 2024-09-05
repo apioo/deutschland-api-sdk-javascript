@@ -15,7 +15,7 @@ export class AutobahnClosureTag extends TagAbstract {
      * Returns available closures for a specific autobahn
      *
      * @returns {Promise<AutobahnClosureCollection>}
-     * @throws {ResponseExceptionException}
+     * @throws {ResponseException}
      * @throws {ClientException}
      */
     public async getAll(autobahnId: string): Promise<AutobahnClosureCollection> {

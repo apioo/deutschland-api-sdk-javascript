@@ -97,4 +97,9 @@ export class Client extends ClientAbstract {
     {
         return new Client('https://api.deutschland-api.dev/', new OAuth2(clientId, clientSecret, 'https://api.deutschland-api.dev/authorization/token', '', tokenStore, scopes));
     }
+
+    public static buildAnonymous(): Client
+    {
+        return new Client('https://api.deutschland-api.dev/', new Anonymous());
+    }
 }

@@ -15,7 +15,7 @@ export class BundesratMemberTag extends TagAbstract {
      * Returns all current members of the Bundesrat
      *
      * @returns {Promise<BundesratMemberCollection>}
-     * @throws {ResponseExceptionException}
+     * @throws {ResponseException}
      * @throws {ClientException}
      */
     public async getAll(): Promise<BundesratMemberCollection> {

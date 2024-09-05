@@ -51,7 +51,7 @@ export class AutobahnTag extends TagAbstract {
      * Returns all available autobahns
      *
      * @returns {Promise<AutobahnCollection>}
-     * @throws {ResponseExceptionException}
+     * @throws {ResponseException}
      * @throws {ClientException}
      */
     public async getAll(): Promise<AutobahnCollection> {

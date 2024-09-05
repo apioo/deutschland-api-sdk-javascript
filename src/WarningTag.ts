@@ -15,7 +15,7 @@ export class WarningTag extends TagAbstract {
      * Returns all available warnings from the modular warning system (MoWaS)
      *
      * @returns {Promise<WarningCollection>}
-     * @throws {ResponseExceptionException}
+     * @throws {ResponseException}
      * @throws {ClientException}
      */
     public async getAll(): Promise<WarningCollection> {

@@ -16,7 +16,7 @@ export class StateTag extends TagAbstract {
      * Returns a specific state
      *
      * @returns {Promise<State>}
-     * @throws {ResponseExceptionException}
+     * @throws {ResponseException}
      * @throws {ClientException}
      */
     public async get(stateId: string): Promise<State> {
@@ -59,7 +59,7 @@ export class StateTag extends TagAbstract {
      * Returns all available states
      *
      * @returns {Promise<StateCollection>}
-     * @throws {ResponseExceptionException}
+     * @throws {ResponseException}
      * @throws {ClientException}
      */
     public async getAll(startIndex?: number, name?: string): Promise<StateCollection> {

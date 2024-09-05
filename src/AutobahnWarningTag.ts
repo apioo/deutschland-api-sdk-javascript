@@ -15,7 +15,7 @@ export class AutobahnWarningTag extends TagAbstract {
      * Returns available warnings for a specific autobahn
      *
      * @returns {Promise<AutobahnWarningCollection>}
-     * @throws {ResponseExceptionException}
+     * @throws {ResponseException}
      * @throws {ClientException}
      */
     public async getAll(autobahnId: string): Promise<AutobahnWarningCollection> {

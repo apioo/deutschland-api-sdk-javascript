@@ -15,7 +15,7 @@ export class AutobahnParkingLorryTag extends TagAbstract {
      * Returns available parking lorries for a specific autobahn
      *
      * @returns {Promise<AutobahnParkingLorryCollection>}
-     * @throws {ResponseExceptionException}
+     * @throws {ResponseException}
      * @throws {ClientException}
      */
     public async getAll(autobahnId: string): Promise<AutobahnParkingLorryCollection> {

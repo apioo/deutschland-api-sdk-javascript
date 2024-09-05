@@ -16,7 +16,7 @@ export class CityTag extends TagAbstract {
      * Returns a specific city
      *
      * @returns {Promise<City>}
-     * @throws {ResponseExceptionException}
+     * @throws {ResponseException}
      * @throws {ClientException}
      */
     public async get(cityId: string): Promise<City> {
@@ -59,7 +59,7 @@ export class CityTag extends TagAbstract {
      * Returns all available cities
      *
      * @returns {Promise<CityCollection>}
-     * @throws {ResponseExceptionException}
+     * @throws {ResponseException}
      * @throws {ClientException}
      */
     public async getAll(startIndex?: number, state?: string, district?: string, name?: string, zipCode?: string): Promise<CityCollection> {

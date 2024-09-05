@@ -16,7 +16,7 @@ export class BundestagMemberTag extends TagAbstract {
      * Returns specific member of the Bundestag
      *
      * @returns {Promise<BundestagMember>}
-     * @throws {ResponseExceptionException}
+     * @throws {ResponseException}
      * @throws {ClientException}
      */
     public async get(memberId: string): Promise<BundestagMember> {
@@ -59,7 +59,7 @@ export class BundestagMemberTag extends TagAbstract {
      * Returns all current members of the Bundestag
      *
      * @returns {Promise<BundestagMemberCollection>}
-     * @throws {ResponseExceptionException}
+     * @throws {ResponseException}
      * @throws {ClientException}
      */
     public async getAll(): Promise<BundestagMemberCollection> {

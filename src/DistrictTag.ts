@@ -16,7 +16,7 @@ export class DistrictTag extends TagAbstract {
      * Returns a specific district
      *
      * @returns {Promise<District>}
-     * @throws {ResponseExceptionException}
+     * @throws {ResponseException}
      * @throws {ClientException}
      */
     public async get(districtId: string): Promise<District> {
@@ -59,7 +59,7 @@ export class DistrictTag extends TagAbstract {
      * Returns all available districts
      *
      * @returns {Promise<DistrictCollection>}
-     * @throws {ResponseExceptionException}
+     * @throws {ResponseException}
      * @throws {ClientException}
      */
     public async getAll(startIndex?: number, state?: string, name?: string): Promise<DistrictCollection> {
