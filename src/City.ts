@@ -10,6 +10,7 @@ export interface City {
     district?: string
     verb?: string
     gem?: string
+    name?: string
     zipCode?: string
     area?: number
 }
