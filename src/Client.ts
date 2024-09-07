@@ -8,6 +8,7 @@ import {ClientAbstract, CredentialsInterface, TokenStoreInterface} from "sdkgen-
 import {OAuth2} from "sdkgen-client"
 import {ClientException, UnknownStatusCodeException} from "sdkgen-client";
 
+import {JobTag} from "./JobTag";
 import {HospitalTag} from "./HospitalTag";
 import {WarningTag} from "./WarningTag";
 import {CityTag} from "./CityTag";
@@ -20,6 +21,14 @@ import {AuthorizationTag} from "./AuthorizationTag";
 import {MetaTag} from "./MetaTag";
 
 export class Client extends ClientAbstract {
+    public job(): JobTag
+    {
+        return new JobTag(
+            this.httpClient,
+            this.parser
+        );
+    }
+
     public hospital(): HospitalTag
     {
         return new HospitalTag(
