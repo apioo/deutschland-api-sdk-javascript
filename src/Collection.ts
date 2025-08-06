@@ -9,3 +9,4 @@ export interface Collection<T> {
     itemsPerPage?: number
     entries?: Array<T>
 }
+

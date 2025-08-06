@@ -4,6 +4,8 @@
  */
 
 import {AutobahnChargingStation} from "./AutobahnChargingStation";
+
 export interface AutobahnChargingStationCollection {
     entries?: Array<AutobahnChargingStation>
 }
+

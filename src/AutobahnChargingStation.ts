@@ -4,9 +4,11 @@
  */
 
 import {AutobahnCoordinate} from "./AutobahnCoordinate";
+
 export interface AutobahnChargingStation {
     id?: string
     title?: string
     description?: Array<string>
     coordinate?: AutobahnCoordinate
 }
+

@@ -8,3 +8,4 @@ export interface State {
     name?: string
     area?: number
 }
+

@@ -4,6 +4,7 @@
  */
 
 import {BundestagConstituency} from "./BundestagConstituency";
+
 export interface BundestagMember {
     id?: string
     name?: string
@@ -17,3 +18,4 @@ export interface BundestagMember {
     photoLastChanged?: string
     lastChanged?: string
 }
+

@@ -14,3 +14,4 @@ export interface City {
     zipCode?: string
     area?: number
 }
+

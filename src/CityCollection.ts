@@ -5,4 +5,7 @@
 
 import {Collection} from "./Collection";
 import {City} from "./City";
-export type CityCollection = Collection<City>;
+
+export interface CityCollection extends Collection<City> {
+}
+

@@ -3,11 +3,11 @@
  * {@link https://sdkgen.app}
  */
 
-import axios, {AxiosRequestConfig} from "axios";
-import {TagAbstract} from "sdkgen-client"
+import {TagAbstract, HttpRequest} from "sdkgen-client"
 import {ClientException, UnknownStatusCodeException} from "sdkgen-client";
 
 import {HospitalCollection} from "./HospitalCollection";
+import {Response} from "./Response";
 import {ResponseException} from "./ResponseException";
 
 export class HospitalTag extends TagAbstract {
@@ -22,9 +22,11 @@ export class HospitalTag extends TagAbstract {
         const url = this.parser.url('/hospital', {
         });
 
-        let params: AxiosRequestConfig = {
+        let request: HttpRequest = {
             url: url,
             method: 'GET',
+            headers: {
+            },
             params: this.parser.query({
                 'startIndex': startIndex,
                 'search': search,
@@ -32,28 +34,27 @@ export class HospitalTag extends TagAbstract {
             ]),
         };
 
-        try {
-            const response = await this.httpClient.request<HospitalCollection>(params);
-            return response.data;
-        } catch (error) {
-            if (error instanceof ClientException) {
-                throw error;
-            } else if (axios.isAxiosError(error) && error.response) {
-                switch (error.response.status) {
-                    case 400:
-                        throw new ResponseException(error.response.data);
-                    case 404:
-                        throw new ResponseException(error.response.data);
-                    case 500:
-                        throw new ResponseException(error.response.data);
-                    default:
-                        throw new UnknownStatusCodeException('The server returned an unknown status code');
-                }
-            } else {
-                throw new ClientException('An unknown error occurred: ' + String(error));
-            }
+        const response = await this.httpClient.request(request);
+        if (response.ok) {
+            return await response.json() as HospitalCollection;
         }
+
+        const statusCode = response.status;
+        if (statusCode === 400) {
+            throw new ResponseException(await response.json() as Response);
+        }
+
+        if (statusCode === 404) {
+            throw new ResponseException(await response.json() as Response);
+        }
+
+        if (statusCode === 500) {
+            throw new ResponseException(await response.json() as Response);
+        }
+
+        throw new UnknownStatusCodeException('The server returned an unknown status code: ' + statusCode);
     }
+
 
 
 }

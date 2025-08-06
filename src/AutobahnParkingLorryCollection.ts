@@ -4,6 +4,8 @@
  */
 
 import {AutobahnParkingLorry} from "./AutobahnParkingLorry";
+
 export interface AutobahnParkingLorryCollection {
     entries?: Array<AutobahnParkingLorry>
 }
+

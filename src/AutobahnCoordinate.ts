@@ -7,3 +7,4 @@ export interface AutobahnCoordinate {
     lat?: string
     long?: string
 }
+

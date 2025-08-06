@@ -4,6 +4,7 @@
  */
 
 import {AutobahnCoordinate} from "./AutobahnCoordinate";
+
 export interface AutobahnWarning {
     id?: string
     blocked?: boolean
@@ -15,3 +16,4 @@ export interface AutobahnWarning {
     coordinate?: AutobahnCoordinate
     lineString?: Array<AutobahnCoordinate>
 }
+

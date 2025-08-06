@@ -4,6 +4,8 @@
  */
 
 import {Warning} from "./Warning";
+
 export interface WarningCollection {
     entries?: Array<Warning>
 }
+

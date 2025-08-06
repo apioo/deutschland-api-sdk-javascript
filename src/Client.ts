@@ -3,43 +3,51 @@
  * {@link https://sdkgen.app}
  */
 
-import axios, {AxiosRequestConfig} from "axios";
-import {ClientAbstract, CredentialsInterface, TokenStoreInterface} from "sdkgen-client"
+import {ClientAbstract, CredentialsInterface, TokenStoreInterface, HttpRequest} from "sdkgen-client"
 import {OAuth2} from "sdkgen-client"
+import {Anonymous} from "sdkgen-client"
 import {ClientException, UnknownStatusCodeException} from "sdkgen-client";
 
-import {JobTag} from "./JobTag";
-import {HospitalTag} from "./HospitalTag";
-import {WarningTag} from "./WarningTag";
+import {AuthorizationTag} from "./AuthorizationTag";
+import {AutobahnTag} from "./AutobahnTag";
+import {BundesratTag} from "./BundesratTag";
+import {BundestagTag} from "./BundestagTag";
 import {CityTag} from "./CityTag";
 import {DistrictTag} from "./DistrictTag";
-import {StateTag} from "./StateTag";
-import {BundestagTag} from "./BundestagTag";
-import {BundesratTag} from "./BundesratTag";
-import {AutobahnTag} from "./AutobahnTag";
-import {AuthorizationTag} from "./AuthorizationTag";
+import {HospitalTag} from "./HospitalTag";
+import {JobTag} from "./JobTag";
 import {MetaTag} from "./MetaTag";
+import {StateTag} from "./StateTag";
+import {WarningTag} from "./WarningTag";
 
 export class Client extends ClientAbstract {
-    public job(): JobTag
+    public authorization(): AuthorizationTag
     {
-        return new JobTag(
+        return new AuthorizationTag(
             this.httpClient,
             this.parser
         );
     }
 
-    public hospital(): HospitalTag
+    public autobahn(): AutobahnTag
     {
-        return new HospitalTag(
+        return new AutobahnTag(
             this.httpClient,
             this.parser
         );
     }
 
-    public warning(): WarningTag
+    public bundesrat(): BundesratTag
     {
-        return new WarningTag(
+        return new BundesratTag(
+            this.httpClient,
+            this.parser
+        );
+    }
+
+    public bundestag(): BundestagTag
+    {
+        return new BundestagTag(
             this.httpClient,
             this.parser
         );
@@ -61,41 +69,17 @@ export class Client extends ClientAbstract {
         );
     }
 
-    public state(): StateTag
+    public hospital(): HospitalTag
     {
-        return new StateTag(
+        return new HospitalTag(
             this.httpClient,
             this.parser
         );
     }
 
-    public bundestag(): BundestagTag
+    public job(): JobTag
     {
-        return new BundestagTag(
-            this.httpClient,
-            this.parser
-        );
-    }
-
-    public bundesrat(): BundesratTag
-    {
-        return new BundesratTag(
-            this.httpClient,
-            this.parser
-        );
-    }
-
-    public autobahn(): AutobahnTag
-    {
-        return new AutobahnTag(
-            this.httpClient,
-            this.parser
-        );
-    }
-
-    public authorization(): AuthorizationTag
-    {
-        return new AuthorizationTag(
+        return new JobTag(
             this.httpClient,
             this.parser
         );
@@ -109,15 +93,31 @@ export class Client extends ClientAbstract {
         );
     }
 
+    public state(): StateTag
+    {
+        return new StateTag(
+            this.httpClient,
+            this.parser
+        );
+    }
+
+    public warning(): WarningTag
+    {
+        return new WarningTag(
+            this.httpClient,
+            this.parser
+        );
+    }
+
 
 
     public static build(clientId: string, clientSecret: string, tokenStore: TokenStoreInterface|null, scopes: Array<string>|null): Client
     {
-        return new Client('https://api.deutschland-api.dev/', new OAuth2(clientId, clientSecret, 'https://api.deutschland-api.dev/authorization/token', '', tokenStore, scopes));
+        return new Client('http://localhost', new OAuth2(clientId, clientSecret, 'http://localhost/authorization/token', 'http://localhost/authorization/authorize', tokenStore, scopes));
     }
 
     public static buildAnonymous(): Client
     {
-        return new Client('https://api.deutschland-api.dev/', new Anonymous());
+        return new Client('http://localhost', new Anonymous());
     }
 }
