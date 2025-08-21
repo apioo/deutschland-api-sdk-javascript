@@ -4,6 +4,8 @@
  */
 
 import {AutobahnClosure} from "./AutobahnClosure";
+
 export interface AutobahnClosureCollection {
     entries?: Array<AutobahnClosure>
 }
+

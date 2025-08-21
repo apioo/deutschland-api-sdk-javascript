@@ -4,6 +4,7 @@
  */
 
 import {JobLocation} from "./JobLocation";
+
 export interface Job {
     job?: string
     title?: string
@@ -13,3 +14,4 @@ export interface Job {
     publishDate?: string
     entranceDate?: string
 }
+

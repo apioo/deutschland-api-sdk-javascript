@@ -9,3 +9,4 @@ export interface Hospital {
     address?: string
     link?: string
 }
+

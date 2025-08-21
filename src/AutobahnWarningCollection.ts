@@ -4,6 +4,8 @@
  */
 
 import {AutobahnWarning} from "./AutobahnWarning";
+
 export interface AutobahnWarningCollection {
     entries?: Array<AutobahnWarning>
 }
+

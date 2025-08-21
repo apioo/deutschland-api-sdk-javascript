@@ -5,4 +5,7 @@
 
 import {Collection} from "./Collection";
 import {State} from "./State";
-export type StateCollection = Collection<State>;
+
+export interface StateCollection extends Collection<State> {
+}
+

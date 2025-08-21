@@ -4,6 +4,7 @@
  */
 
 import {JobCoordinate} from "./JobCoordinate";
+
 export interface JobLocation {
     zip?: string
     place?: string
@@ -11,3 +12,4 @@ export interface JobLocation {
     country?: string
     coordinate?: JobCoordinate
 }
+

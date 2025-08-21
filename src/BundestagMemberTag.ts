@@ -3,12 +3,12 @@
  * {@link https://sdkgen.app}
  */
 
-import axios, {AxiosRequestConfig} from "axios";
-import {TagAbstract} from "sdkgen-client"
+import {TagAbstract, HttpRequest} from "sdkgen-client"
 import {ClientException, UnknownStatusCodeException} from "sdkgen-client";
 
 import {BundestagMember} from "./BundestagMember";
 import {BundestagMemberCollection} from "./BundestagMemberCollection";
+import {Response} from "./Response";
 import {ResponseException} from "./ResponseException";
 
 export class BundestagMemberTag extends TagAbstract {
@@ -24,37 +24,36 @@ export class BundestagMemberTag extends TagAbstract {
             'member_id': memberId,
         });
 
-        let params: AxiosRequestConfig = {
+        let request: HttpRequest = {
             url: url,
             method: 'GET',
+            headers: {
+            },
             params: this.parser.query({
             }, [
             ]),
         };
 
-        try {
-            const response = await this.httpClient.request<BundestagMember>(params);
-            return response.data;
-        } catch (error) {
-            if (error instanceof ClientException) {
-                throw error;
-            } else if (axios.isAxiosError(error) && error.response) {
-                switch (error.response.status) {
-                    case 400:
-                        throw new ResponseException(error.response.data);
-                    case 404:
-                        throw new ResponseException(error.response.data);
-                    case 500:
-                        throw new ResponseException(error.response.data);
-                    default:
-                        throw new UnknownStatusCodeException('The server returned an unknown status code');
-                }
-            } else {
-                throw new ClientException('An unknown error occurred: ' + String(error));
-            }
+        const response = await this.httpClient.request(request);
+        if (response.ok) {
+            return await response.json() as BundestagMember;
         }
-    }
 
+        const statusCode = response.status;
+        if (statusCode === 400) {
+            throw new ResponseException(await response.json() as Response);
+        }
+
+        if (statusCode === 404) {
+            throw new ResponseException(await response.json() as Response);
+        }
+
+        if (statusCode === 500) {
+            throw new ResponseException(await response.json() as Response);
+        }
+
+        throw new UnknownStatusCodeException('The server returned an unknown status code: ' + statusCode);
+    }
     /**
      * Returns all current members of the Bundestag
      *
@@ -66,36 +65,37 @@ export class BundestagMemberTag extends TagAbstract {
         const url = this.parser.url('/bundestag/member', {
         });
 
-        let params: AxiosRequestConfig = {
+        let request: HttpRequest = {
             url: url,
             method: 'GET',
+            headers: {
+            },
             params: this.parser.query({
             }, [
             ]),
         };
 
-        try {
-            const response = await this.httpClient.request<BundestagMemberCollection>(params);
-            return response.data;
-        } catch (error) {
-            if (error instanceof ClientException) {
-                throw error;
-            } else if (axios.isAxiosError(error) && error.response) {
-                switch (error.response.status) {
-                    case 400:
-                        throw new ResponseException(error.response.data);
-                    case 404:
-                        throw new ResponseException(error.response.data);
-                    case 500:
-                        throw new ResponseException(error.response.data);
-                    default:
-                        throw new UnknownStatusCodeException('The server returned an unknown status code');
-                }
-            } else {
-                throw new ClientException('An unknown error occurred: ' + String(error));
-            }
+        const response = await this.httpClient.request(request);
+        if (response.ok) {
+            return await response.json() as BundestagMemberCollection;
         }
+
+        const statusCode = response.status;
+        if (statusCode === 400) {
+            throw new ResponseException(await response.json() as Response);
+        }
+
+        if (statusCode === 404) {
+            throw new ResponseException(await response.json() as Response);
+        }
+
+        if (statusCode === 500) {
+            throw new ResponseException(await response.json() as Response);
+        }
+
+        throw new UnknownStatusCodeException('The server returned an unknown status code: ' + statusCode);
     }
+
 
 
 }

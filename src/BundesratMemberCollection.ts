@@ -4,6 +4,8 @@
  */
 
 import {BundesratMember} from "./BundesratMember";
+
 export interface BundesratMemberCollection {
     entries?: Array<BundesratMember>
 }
+

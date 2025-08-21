@@ -3,8 +3,7 @@
  * {@link https://sdkgen.app}
  */
 
-import axios, {AxiosRequestConfig} from "axios";
-import {TagAbstract} from "sdkgen-client"
+import {TagAbstract, HttpRequest} from "sdkgen-client"
 import {ClientException, UnknownStatusCodeException} from "sdkgen-client";
 
 import {AutobahnChargingStationTag} from "./AutobahnChargingStationTag";
@@ -12,20 +11,13 @@ import {AutobahnClosureTag} from "./AutobahnClosureTag";
 import {AutobahnCollection} from "./AutobahnCollection";
 import {AutobahnParkingLorryTag} from "./AutobahnParkingLorryTag";
 import {AutobahnWarningTag} from "./AutobahnWarningTag";
+import {Response} from "./Response";
 import {ResponseException} from "./ResponseException";
 
 export class AutobahnTag extends TagAbstract {
-    public warning(): AutobahnWarningTag
+    public chargingStation(): AutobahnChargingStationTag
     {
-        return new AutobahnWarningTag(
-            this.httpClient,
-            this.parser
-        );
-    }
-
-    public parkingLorry(): AutobahnParkingLorryTag
-    {
-        return new AutobahnParkingLorryTag(
+        return new AutobahnChargingStationTag(
             this.httpClient,
             this.parser
         );
@@ -39,9 +31,17 @@ export class AutobahnTag extends TagAbstract {
         );
     }
 
-    public chargingStation(): AutobahnChargingStationTag
+    public parkingLorry(): AutobahnParkingLorryTag
     {
-        return new AutobahnChargingStationTag(
+        return new AutobahnParkingLorryTag(
+            this.httpClient,
+            this.parser
+        );
+    }
+
+    public warning(): AutobahnWarningTag
+    {
+        return new AutobahnWarningTag(
             this.httpClient,
             this.parser
         );
@@ -58,36 +58,37 @@ export class AutobahnTag extends TagAbstract {
         const url = this.parser.url('/autobahn', {
         });
 
-        let params: AxiosRequestConfig = {
+        let request: HttpRequest = {
             url: url,
             method: 'GET',
+            headers: {
+            },
             params: this.parser.query({
             }, [
             ]),
         };
 
-        try {
-            const response = await this.httpClient.request<AutobahnCollection>(params);
-            return response.data;
-        } catch (error) {
-            if (error instanceof ClientException) {
-                throw error;
-            } else if (axios.isAxiosError(error) && error.response) {
-                switch (error.response.status) {
-                    case 400:
-                        throw new ResponseException(error.response.data);
-                    case 404:
-                        throw new ResponseException(error.response.data);
-                    case 500:
-                        throw new ResponseException(error.response.data);
-                    default:
-                        throw new UnknownStatusCodeException('The server returned an unknown status code');
-                }
-            } else {
-                throw new ClientException('An unknown error occurred: ' + String(error));
-            }
+        const response = await this.httpClient.request(request);
+        if (response.ok) {
+            return await response.json() as AutobahnCollection;
         }
+
+        const statusCode = response.status;
+        if (statusCode === 400) {
+            throw new ResponseException(await response.json() as Response);
+        }
+
+        if (statusCode === 404) {
+            throw new ResponseException(await response.json() as Response);
+        }
+
+        if (statusCode === 500) {
+            throw new ResponseException(await response.json() as Response);
+        }
+
+        throw new UnknownStatusCodeException('The server returned an unknown status code: ' + statusCode);
     }
+
 
 
 }

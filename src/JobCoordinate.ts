@@ -9,3 +9,4 @@ export interface JobCoordinate {
     address?: string
     link?: string
 }
+

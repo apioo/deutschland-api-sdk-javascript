@@ -6,3 +6,4 @@
 export interface AutobahnCollection {
     roads?: Array<string>
 }
+

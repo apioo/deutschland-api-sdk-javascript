@@ -18,3 +18,4 @@ export interface BundesratMember {
     bio?: string
     address?: string
 }
+

@@ -11,3 +11,4 @@ export interface District {
     nuts3?: string
     area?: number
 }
+

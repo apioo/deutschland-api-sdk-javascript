@@ -5,4 +5,7 @@
 
 import {Collection} from "./Collection";
 import {Hospital} from "./Hospital";
-export type HospitalCollection = Collection<Hospital>;
+
+export interface HospitalCollection extends Collection<Hospital> {
+}
+

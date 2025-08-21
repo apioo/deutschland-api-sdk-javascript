@@ -5,4 +5,7 @@
 
 import {Collection} from "./Collection";
 import {Job} from "./Job";
-export type JobCollection = Collection<Job>;
+
+export interface JobCollection extends Collection<Job> {
+}
+

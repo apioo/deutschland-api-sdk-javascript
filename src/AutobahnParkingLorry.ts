@@ -4,6 +4,7 @@
  */
 
 import {AutobahnCoordinate} from "./AutobahnCoordinate";
+
 export interface AutobahnParkingLorry {
     id?: string
     title?: string
@@ -12,3 +13,4 @@ export interface AutobahnParkingLorry {
     coordinate?: AutobahnCoordinate
     features?: Array<string>
 }
+
