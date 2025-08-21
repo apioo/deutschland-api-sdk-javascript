@@ -13,7 +13,7 @@ import {ResponseException} from "./ResponseException";
 
 export class BundestagMemberTag extends TagAbstract {
     /**
-     * Returns specific member of the Bundestag
+     * Returns a specific member of the Bundestag
      *
      * @returns {Promise<BundestagMember>}
      * @throws {ResponseException}
