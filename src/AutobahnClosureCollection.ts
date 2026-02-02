@@ -3,7 +3,7 @@
  * {@link https://sdkgen.app}
  */
 
-import {AutobahnClosure} from "./AutobahnClosure";
+import type {AutobahnClosure} from "./AutobahnClosure";
 
 export interface AutobahnClosureCollection {
     entries?: Array<AutobahnClosure>

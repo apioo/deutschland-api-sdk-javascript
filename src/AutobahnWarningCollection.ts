@@ -3,7 +3,7 @@
  * {@link https://sdkgen.app}
  */
 
-import {AutobahnWarning} from "./AutobahnWarning";
+import type {AutobahnWarning} from "./AutobahnWarning";
 
 export interface AutobahnWarningCollection {
     entries?: Array<AutobahnWarning>

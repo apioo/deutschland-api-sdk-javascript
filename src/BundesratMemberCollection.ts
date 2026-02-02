@@ -3,7 +3,7 @@
  * {@link https://sdkgen.app}
  */
 
-import {BundesratMember} from "./BundesratMember";
+import type {BundesratMember} from "./BundesratMember";
 
 export interface BundesratMemberCollection {
     entries?: Array<BundesratMember>

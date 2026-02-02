@@ -3,8 +3,8 @@
  * {@link https://sdkgen.app}
  */
 
-import {Collection} from "./Collection";
-import {District} from "./District";
+import type {Collection} from "./Collection";
+import type {District} from "./District";
 
 export interface DistrictCollection extends Collection<District> {
 }

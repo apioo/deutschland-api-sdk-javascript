@@ -3,7 +3,7 @@
  * {@link https://sdkgen.app}
  */
 
-import {BundestagConstituency} from "./BundestagConstituency";
+import type {BundestagConstituency} from "./BundestagConstituency";
 
 export interface BundestagMember {
     id?: string

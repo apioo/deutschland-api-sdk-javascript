@@ -17,6 +17,7 @@ import {DistrictTag} from "./DistrictTag";
 import {HospitalTag} from "./HospitalTag";
 import {JobTag} from "./JobTag";
 import {MetaTag} from "./MetaTag";
+import {NewsTag} from "./NewsTag";
 import {StateTag} from "./StateTag";
 import {WarningTag} from "./WarningTag";
 
@@ -88,6 +89,14 @@ export class Client extends ClientAbstract {
     public meta(): MetaTag
     {
         return new MetaTag(
+            this.httpClient,
+            this.parser
+        );
+    }
+
+    public news(): NewsTag
+    {
+        return new NewsTag(
             this.httpClient,
             this.parser
         );

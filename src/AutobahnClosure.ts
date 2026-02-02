@@ -3,7 +3,7 @@
  * {@link https://sdkgen.app}
  */
 
-import {AutobahnCoordinate} from "./AutobahnCoordinate";
+import type {AutobahnCoordinate} from "./AutobahnCoordinate";
 
 export interface AutobahnClosure {
     id?: string

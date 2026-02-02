@@ -3,7 +3,7 @@
  * {@link https://sdkgen.app}
  */
 
-import {JobLocation} from "./JobLocation";
+import type {JobLocation} from "./JobLocation";
 
 export interface Job {
     job?: string

@@ -3,8 +3,8 @@
  * {@link https://sdkgen.app}
  */
 
-import {Collection} from "./Collection";
-import {Hospital} from "./Hospital";
+import type {Collection} from "./Collection";
+import type {Hospital} from "./Hospital";
 
 export interface HospitalCollection extends Collection<Hospital> {
 }

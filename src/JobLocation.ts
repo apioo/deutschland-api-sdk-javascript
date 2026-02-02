@@ -3,7 +3,7 @@
  * {@link https://sdkgen.app}
  */
 
-import {JobCoordinate} from "./JobCoordinate";
+import type {JobCoordinate} from "./JobCoordinate";
 
 export interface JobLocation {
     zip?: string

@@ -3,8 +3,8 @@
  * {@link https://sdkgen.app}
  */
 
-import {Collection} from "./Collection";
-import {Job} from "./Job";
+import type {Collection} from "./Collection";
+import type {Job} from "./Job";
 
 export interface JobCollection extends Collection<Job> {
 }
