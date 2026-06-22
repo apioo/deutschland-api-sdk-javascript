@@ -10,6 +10,7 @@ import {ClientException, UnknownStatusCodeException} from "sdkgen-client";
 
 import {AuthorizationTag} from "./AuthorizationTag";
 import {AutobahnTag} from "./AutobahnTag";
+import {BudgetTag} from "./BudgetTag";
 import {BundesratTag} from "./BundesratTag";
 import {BundestagTag} from "./BundestagTag";
 import {CityTag} from "./CityTag";
@@ -33,6 +34,14 @@ export class Client extends ClientAbstract {
     public autobahn(): AutobahnTag
     {
         return new AutobahnTag(
+            this.httpClient,
+            this.parser
+        );
+    }
+
+    public budget(): BudgetTag
+    {
+        return new BudgetTag(
             this.httpClient,
             this.parser
         );
