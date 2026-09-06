@@ -3,7 +3,7 @@
  * {@link https://sdkgen.app}
  */
 
-import {Warning} from "./Warning";
+import type {Warning} from "./Warning";
 
 export interface WarningCollection {
     entries?: Array<Warning>

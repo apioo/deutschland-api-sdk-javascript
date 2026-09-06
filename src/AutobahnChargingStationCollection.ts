@@ -3,7 +3,7 @@
  * {@link https://sdkgen.app}
  */
 
-import {AutobahnChargingStation} from "./AutobahnChargingStation";
+import type {AutobahnChargingStation} from "./AutobahnChargingStation";
 
 export interface AutobahnChargingStationCollection {
     entries?: Array<AutobahnChargingStation>

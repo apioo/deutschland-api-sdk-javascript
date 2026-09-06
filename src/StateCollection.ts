@@ -3,8 +3,8 @@
  * {@link https://sdkgen.app}
  */
 
-import {Collection} from "./Collection";
-import {State} from "./State";
+import type {Collection} from "./Collection";
+import type {State} from "./State";
 
 export interface StateCollection extends Collection<State> {
 }

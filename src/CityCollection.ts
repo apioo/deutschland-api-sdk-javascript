@@ -3,8 +3,8 @@
  * {@link https://sdkgen.app}
  */
 
-import {Collection} from "./Collection";
-import {City} from "./City";
+import type {Collection} from "./Collection";
+import type {City} from "./City";
 
 export interface CityCollection extends Collection<City> {
 }
